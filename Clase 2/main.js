@@ -1,7 +1,7 @@
 let string1 = prompt('Saludame: ');
 
 
-if(string1 == 'Hola' || string1 == 'hola'){
+if(string1.toLowerCase().includes('hola')){
     alert('como estas?')
 }else{
     alert('no seas mala onda, saludame bien :)')
