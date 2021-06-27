@@ -28,3 +28,27 @@ while(isNaN(num2) ){
 for(let u = 1; u <= num2; u++ ){
     console.log(`${u} - hola`)
 }
+
+let palabras = prompt('Introduce palabras, cuando quieras terminar ingresa FIN')
+
+do{
+    
+    console.log(palabras);  
+    palabras = prompt('Introduce palabras, cuando quieras terminar ingresa FIN');  
+}while(palabras != 'FIN');
+
+let final = parseInt(prompt('Ingrese un limite para un contador: '))
+while(isNaN(final)){
+    final = parseInt(prompt('Ingresa un numero, otro tipo de datos no es valido'))
+}
+for(let y = 0; y <= final; y++){
+    switch(y%2){
+        case 0:
+            console.log(`${y} es par`);
+            break;
+        case 1:
+            console.log(`${y} es impar`);
+            break;
+
+    }
+}
