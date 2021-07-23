@@ -78,7 +78,7 @@ form.addEventListener('submit', (e)=>{
                     <h5 class="card-title">${product}</h5>
                     <p class="card-text">Cantidad : ${quantity}</p>
                     <p class="card-text">${optionSelected}</p>
-                    <button class="btn btn-danger d-block w-100 delete">Borrar Producto</button>
+                    <button data-index="${counter}" class="btn btn-danger d-block w-100 delete">Borrar Producto</button>
                 </div>
             </div>
         </div>
