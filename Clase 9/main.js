@@ -19,7 +19,6 @@ const listadoPedidos = [];
 const newListado = []
 
 const List = document.querySelector('#lista');
-console.log(jsonData)
 if(jsonData != null){
     listadoPedidos.push(jsonData);
     
@@ -61,8 +60,13 @@ form.addEventListener('submit', (e)=>{
     
     if(product.trim() != '' && quantity != 0){
     const producto = new Compra(counter, product, quantity, optionSelected);  
+    console.log(listadoPedidos.length)
+        if(listadoPedidos.length != 0){
 
-    newListado.push(...listadoPedidos[0], producto)
+            newListado.push(...listadoPedidos[0], producto)
+        }else{
+            newListado.push(producto)
+        }
 
     localStorage.setItem('producto', JSON.stringify(newListado))
         const item = `
