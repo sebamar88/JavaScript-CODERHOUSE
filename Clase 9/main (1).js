@@ -12,23 +12,6 @@ class Compra{
     }
 }
 
-const itemCard = (obj) =>{
-    return(`
-    <div class="col-md-3 text-center">
-        <div class="card" style="width: 100%;">
-            <img src="https://via.placeholder.com/300/000000/FFFFFF/?text=${obj.product}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <span class="bardge">ID : ${obj.id}</span>
-                <h5 class="card-title">${obj.product}</h5>
-                <p class="card-text">Cantidad : ${obj.quantity}</p>
-                <p class="card-text">${obj.shop}</p>
-                <button data-index="${obj.id}" class="btn btn-danger d-block w-100 delete">Borrar Producto</button>
-            </div>
-        </div>
-    </div>
-    `)
-}
-
 let counter;
 
 let jsonData = JSON.parse(localStorage.getItem('producto'));
@@ -36,12 +19,28 @@ const listadoPedidos = [];
 const newListado = []
 
 const List = document.querySelector('#lista');
+console.log(jsonData)
 if(jsonData != null){
-    listadoPedidos.push(jsonData);    
+    listadoPedidos.push(jsonData);
+    
     counter = jsonData.length;
     listadoPedidos.map(obj =>{
         obj.map(elem => {
-            List.innerHTML += itemCard(elem);
+            const item = `
+            <div class="col-md-3 text-center">
+                <div class="card" style="width: 100%;">
+                    <img src="https://via.placeholder.com/300/000000/FFFFFF/?text=${elem.product}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <span class="bardge">ID : ${elem.id}</span>
+                        <h5 class="card-title">${elem.product}</h5>
+                        <p class="card-text">Cantidad : ${elem.quantity}</p>
+                        <p class="card-text">${elem.shop}</p>
+                        <button data-index="${elem.id}" class="btn btn-danger d-block w-100 delete">Borrar Producto</button>
+                    </div>
+                </div>
+            </div>
+            `;
+            List.innerHTML += item;
         })
         
     })
@@ -71,7 +70,21 @@ form.addEventListener('submit', (e)=>{
         }
 
     localStorage.setItem('producto', JSON.stringify(newListado))
-        List.innerHTML += itemCard(producto);
+        const item = `
+        <div class="col-md-3 text-center">
+            <div class="card" style="width: 100%;">
+                <img src="https://via.placeholder.com/300/000000/FFFFFF/?text=${product}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <span class="bardge">ID : ${counter}</span>
+                    <h5 class="card-title">${product}</h5>
+                    <p class="card-text">Cantidad : ${quantity}</p>
+                    <p class="card-text">${optionSelected}</p>
+                    <button class="btn btn-danger d-block w-100 delete">Borrar Producto</button>
+                </div>
+            </div>
+        </div>
+        `;
+        List.innerHTML += item;
     counter++;
     form.reset();   
     }else{
