@@ -71,6 +71,7 @@ form.addEventListener('submit', (e)=>{
         }
 
     localStorage.setItem('producto', JSON.stringify(newListado))
+
         List.innerHTML += itemCard(producto);
     counter++;
     form.reset();   
